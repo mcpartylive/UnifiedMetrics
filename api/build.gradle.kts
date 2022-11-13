@@ -17,9 +17,10 @@
 
 dependencies {
     api(platform(kotlin("bom")))
-    api(kotlin("stdlib"))
-    api("org.jetbrains.kotlinx", "kotlinx-coroutines-core", "1.6.4")
-    api("org.jetbrains.kotlinx", "kotlinx-serialization-core", "1.4.1")
+
+    compileOnly(kotlin("stdlib"))
+    compileOnly("org.jetbrains.kotlinx", "kotlinx-coroutines-core", "1.6.4")
+    compileOnly("org.jetbrains.kotlinx", "kotlinx-serialization-core", "1.4.1")
 }
 
 java {
