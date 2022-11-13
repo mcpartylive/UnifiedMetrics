@@ -15,6 +15,7 @@
  *     along with UnifiedMetrics.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -69,6 +70,9 @@ subprojects {
     afterEvaluate {
         tasks.findByName("shadowJar")?.also {
             tasks.named("assemble") { dependsOn(it) }
+            tasks.named<ShadowJar>("shadowJar") {
+                exclude("kotlin/**", "kotlinx/**")
+            }
         }
         configure<SigningExtension> {
             sign(configurations["archives"])
